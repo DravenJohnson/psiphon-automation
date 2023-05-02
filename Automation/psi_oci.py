@@ -87,7 +87,7 @@ class PsiOCI:
         return self.identity_api.list_availability_domains(compartment_id=self.config["compartment"]).data
 
     def get_region(self):
-        regions = ["ca-toronto-1": "CA",
+        regions = {"ca-toronto-1": "CA",
                    "eu-marseille-1": "FR",
                    "eu-frankfurt-1": "DE",
                    "eu-milan-1": "IT",
@@ -96,12 +96,12 @@ class PsiOCI:
                    "eu-stockholm-1": "SE",
                    "eu-zurich-1": "CH",
                    "uk-cardiff-1": "GB",
-                   "us-phoenix-1": "US"]
+                   "us-phoenix-1": "US"}
 
         return regions.get(self.config["region"], '')
 
     def get_datacenter_names(self):
-        datacenters = ["ca-toronto-1": "OCI Toronto, CA",
+        datacenters = {"ca-toronto-1": "OCI Toronto, CA",
                    "eu-marseille-1": "OCI Marseille, FR",
                    "eu-frankfurt-1": "OCI Frankfurt, DE",
                    "eu-milan-1": "OCI Milan, IT",
@@ -110,24 +110,29 @@ class PsiOCI:
                    "eu-stockholm-1": "OCI Stockholm, SE",
                    "eu-zurich-1": "OCI Zurich, CH",
                    "uk-cardiff-1": "OCI Cardiff, GB",
-                   "us-phoenix-1": "OCI Phoenix, US"]
+                   "us-phoenix-1": "OCI Phoenix, US"}
 
         return datacenters.get(self.region, '')
 
     def list_instances(self):
         # TODO
+        pass
 
     def remove_instance(self, instance_id):
         # TODO
+        pass
 
     def start_instance(self, instance_id):
         # TODO
+        pass
 
     def stop_instance(self, instance_id):        
         # TODO
+        pass
 
     def restart_instance(self, instance_id):
         # TODO
+        pass
 
     def create_image(self):
         image = compute_api.create_image(
@@ -149,7 +154,7 @@ class PsiOCI:
     def create_instance(self, host_id):
         instance = compute_api.launch_instance(
             launch_instance_details=oci.core.models.LaunchInstanceDetails(
-                display_name=host_id
+                display_name=host_id,
                 availability_domain=random.choice(self.get_availability_domains()).name,
                 compartment_id=self.config["compartment"],
                 image_id=self.get_image().id,
@@ -225,12 +230,15 @@ def add_swap_file(oracle_account, ip_address):
 ###
 def get_servers(oracle_account):
     # TODO
+    pass
 
 def get_server(oracle_account, instance_id):
     # TODO
+    pass
 
 def remove_server(oracle_account, instance_id):
     # TODO
+    pass
 
 def get_server_ip_addresses(oracle_account, instance_id):
     oci_api = PsiOCI(oracle_account) # Use new API interface
@@ -273,6 +281,7 @@ def launch_new_server(oracle_account, is_TCS, plugins, multi_ip=False):
     except Exception as ex:
         if instance:
             # TODO: Remove instance if failure
+            pass
         raise ex
 
     return (host_id, is_TCS, 'NATIVE' if is_TCS else None, None,
