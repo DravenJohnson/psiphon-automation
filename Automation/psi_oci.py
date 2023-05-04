@@ -265,7 +265,7 @@ def launch_new_server(oracle_account, is_TCS, plugins, multi_ip=False):
 
         # Wait for job completion
         wait_while_condition(lambda: oci_api.compute_api.get_instance(instance.id).data.lifecycle_state != 'RUNNING',
-                         30,
+                         60,
                          'Create OCI Instance')
 
         instance_ip_address, instance_internal_ip_address = get_server_ip_addresses(oracle_account, instance.id)
