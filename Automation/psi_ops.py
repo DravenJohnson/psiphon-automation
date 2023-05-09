@@ -336,7 +336,7 @@ OracleAccount = psi_utils.recordtype(
     'oci_tenancy_id, oci_compartment_id, ' +
     'regions, oci_bucket_image_url, ' +
     'base_image_root_password, base_image_ssh_port, ' +
-    base_image_ssh_public_key, base_image_rsa_private_key',
+    'base_image_ssh_public_key, base_image_rsa_private_key',
     default=None)
 
 ElasticHostsAccount = psi_utils.recordtype(
